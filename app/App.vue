@@ -1,53 +1,112 @@
 <template>
   <div id="app">
-    <img class="logo" src="./assets/logo.png">
-    <hello></hello>
-    <p>
-      Welcome to your Electron + Vue.js app. To get started, take a look at the
-      <a href="https://github.com/vuejs-templates/webpack#folder-structure" target="_blank">README</a>
-      of this template. If you have any issues with the setup, please file an issue at this template's repository.
-    </p>
-    <p>
-      For advanced configurations, checkout the docs for
-      <a href="http://webpack.github.io/" target="_blank">Webpack</a> and
-      <a href="http://vuejs.github.io/vue-loader/" target="_blank">vue-loader</a>.
-    </p>
-    <p>
-      You may also want to checkout
-      <a href="https://github.com/vuejs/vue-router/" target="_blank">vue-router</a> for routing and
-      <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management.
-    </p>
+    <toolbar></toolbar>
+    <notes-list></notes-list>
+    <editor></editor>
   </div>
 </template>
 
 <script>
-  import Hello from './components/Hello'
+import Toolbar from './components/toolbar'
+import NotesList from './components/noteslist'
+import Editor from './components/editor'
 
-  export default {
-    components: {
-      Hello
-    }
+export default {
+  components: {
+    Toolbar,
+    NotesList,
+    Editor
   }
+}
 </script>
 
+
 <style>
-  html {
-    height: 100%;
-  }
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  #app {
-    margin-top: -100px;
-    max-width: 600px;
-    font-family: Helvetica, sans-serif;
-    text-align: center;
-  }
-  .logo {
-    width: 100px;
-    height: 100px
-  }
+html, #app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 100%;
+  max-height: 100%;
+  position: relative;
+}
+
+#toolbar {
+  float: left;
+  width: 80px;
+  height: 100%;
+  background-color: #30414D;
+  color: #767676;
+  padding: 35px 25px 25px 25px;
+}
+
+#notes-list {
+  float: left;
+  width: 300px;
+  height: 100%;
+  background-color: #F5F5F5;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+#list-header {
+  padding: 5px 25px 25px 25px;
+}
+
+#list-header h2 {
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 22px;
+  padding-bottom: 8px;
+}
+
+#notes-list .container {
+  height: calc(100% - 137px);
+  max-height: calc(100% - 137px);
+  overflow: auto;
+  width: 100%;
+  padding: 0;
+}
+
+#notes-list .container .list-group-item {
+  border: 0;
+  border-radius: 0;
+}
+
+.list-group-item-heading {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+#note-editor {
+  height: 100%;
+  margin-left: 380px;
+}
+
+#note-editor textarea {
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+}
+
+#toolbar i {
+  font-size: 30px;
+  margin-bottom: 35px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+#toolbar i:hover {
+  opacity: 1;
+}
+
+.starred {
+  color: #F7AE4F;
+}
 </style>
